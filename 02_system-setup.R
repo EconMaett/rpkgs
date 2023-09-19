@@ -40,8 +40,8 @@ if (interactive()) {
 }
 
 
-# Note: In general it is a bad idea to attach packages to .Rprofile, 
-# but since devtools is only used for package development, its 
+# Note: In general it is a bad idea to attach packages to .Rprofile,
+# but since devtools is only used for package development, its
 # functions are unlikely to appear in your reproducible analyses.
 
 
@@ -56,11 +56,11 @@ usethis::edit_r_profile()
 
 options(
   "Authors@R" = utils::person(
-    given = "Matthias", family = "Spichiger", middle = "Pascal", 
-    email = "matthias.spichiger@bluewin.ch", 
-    role = c("aut", "cre"), 
+    given = "Matthias", family = "Spichiger", middle = "Pascal",
+    email = "matthias.spichiger@bluewin.ch",
+    role = c("aut", "cre"),
     comment = c(ORCID = "0000-0003-0368-5175")
-    ), 
+  ),
   License = "MIT + file LICENSE"
 )
 

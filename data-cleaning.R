@@ -13,4 +13,3 @@ now <- Sys.time()
 timestamp <- format(now, "%Y-%B-%d_%H-%M-%S")
 (outfile <- paste0(timestamp, "_", sub(pattern = "(.*)([.]csv$)", replacement = "\\1_clean\\2", x = infile)))
 write.csv(dat, file = outfile, quote = FALSE, row.names = FALSE)
-

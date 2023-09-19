@@ -4,7 +4,7 @@
 # like the first.
 
 # We start with a data analysis script and isolate and extract reusable data
-# from the script and put it into an R package, and then use that package in a 
+# from the script and put it into an R package, and then use that package in a
 # simplified script.
 
 # The section headers incorporate the NATO phonetic alphabet and have no specific meaning.
@@ -78,19 +78,19 @@ infile <- "swim.csv"
 dat <- read_csv(file = infile, col_types = cols(name = "c", where = "c", temp = "d"))
 
 lookup_table <- tribble(
-  ~ where, ~ english,
+  ~where, ~english,
   "beach", "US",
   "coast", "US",
   "seashore", "UK",
   "seaside", "UK"
 )
 
-dat <- dat |> 
+dat <- dat |>
   left_join(y = lookup_table, by = join_by(where))
 
 f_to_c <- function(x) (x - 32) * 5 / 9
 
-dat <- dat |> 
+dat <- dat |>
   mutate(temp = if_else(condition = english == "US", true = f_to_c(temp), false = temp))
 
 dat
@@ -113,7 +113,7 @@ write_csv(dat, file = outfile_path(infile))
 #   This makes the code less repetitive and easier to understand.
 
 # - We created new helper functions, `f_to_c()`, `timestamp()`, and `outfile_path()`
-#   that hold the isolated logic for converting temperatures and forming the timestamped 
+#   that hold the isolated logic for converting temperatures and forming the timestamped
 #   output file.
 
 # It is now easier to recognize the reusable bits of the script, i.e., the bits
@@ -147,9 +147,9 @@ library(tidyverse)
 
 localize_beach <- function(dat) {
   lookup_table <- read_csv(
-    file = "beach-lookup-table.csv", 
+    file = "beach-lookup-table.csv",
     col_types = cols(where = "c", english = "c")
-    )
+  )
   left_join(x = dat, y = lookup_table, by = join_by(where))
 }
 
@@ -165,7 +165,7 @@ outfile_path <- function(infile) {
   paste0(timestamp(now), "_", sub(pattern = "(.*)([.]csv$)", replacement = "\\1_clean\\2", x = infile))
 }
 
-# We have added high-level helper functions `localize_beach()` and 
+# We have added high-level helper functions `localize_beach()` and
 # `celsify_temp()` to the pre-existing helpers `f_to_c()`, `timestamp()`,
 # and `outfile_path()`.
 
@@ -176,9 +176,9 @@ source(file = "cleaning-helpers.R")
 infile <- "swim.csv"
 dat <- read_csv(file = infile, col_types = cols(name = "c", where = "c", temp = "d"))
 
-(dat <- dat |> 
-    localize_beach() |> 
-    celsify_temp())
+(dat <- dat |>
+  localize_beach() |>
+  celsify_temp())
 
 write_csv(dat, file = outfile_path(infile))
 
@@ -223,13 +223,13 @@ library(delta)
 infile <- "swim.csv"
 dat <- read_csv(file = infile, col_types = cols(name = "c", where = "c", temp = "d"))
 
-dat <- dat |> 
-  localize_beach() |> 
+dat <- dat |>
+  localize_beach() |>
   celsify_temp()
 
 write_csv(dat, outfile_path(infile))
 
-# The only change from the previous script is that 
+# The only change from the previous script is that
 # `source(file = "cleaning-helpers.R")` has been replaced by `library(delta)`.
 
 # But if you try to run the script `data-cleaning_v4.R`, you will get an error
@@ -239,8 +239,8 @@ write_csv(dat, outfile_path(infile))
 # does not dump its functions into the global workspace.
 
 # By default, functions in a package are for internal use only.
-dat |> 
-  delta:::localize_beach() |> 
+dat |>
+  delta:::localize_beach() |>
   delta:::celsify_temp()
 # Would therefore work, since the `:::` operator lets you access functions that
 # are for internal use only. This is implemented in `data-cleaning_v5.R`.
@@ -265,8 +265,8 @@ library(delta)
 infile <- "swim.csv"
 dat <- read_csv(file = infile, col_types = cols(name = "c", where = "c", temp = "d"))
 
-dat <- dat |> 
-  localize_beach() |> 
+dat <- dat |>
+  localize_beach() |>
   celsify_temp()
 
 write_csv(dat, outfile_path(infile))
@@ -287,8 +287,8 @@ setwd(dir = delta_dir)
 devtools::install()
 library(delta)
 
-dat <- dat |> 
-  delta::localize_beach() |> 
+dat <- dat |>
+  delta::localize_beach() |>
   delta::celsify_temp()
 
 write_csv(dat, paste0(orig_wd, "/", delta::outfile_path(infile)))
@@ -321,7 +321,7 @@ devtools::check(pkg = delta_dir)
 
 # Dependencies must be declared in the `DESCRIPTION` files.
 
-# To review, simply copying `cleaning-helpers.R` to `delta/R/cleaning-helpers.R` 
+# To review, simply copying `cleaning-helpers.R` to `delta/R/cleaning-helpers.R`
 # failed for the following reasons:
 # - It does not account for exported vs. non-exported functions.
 # - The CSV-file holding the lookup table cannot be found in the installed package.
@@ -335,10 +335,10 @@ usethis::create_package(path = echo_dir)
 # We simply include the code to create the lookup table inside of `R/cleaning-helpers.R`
 lookup_table <- dplyr::tribble(
   ~where, ~english,
-  "beach",     "US",
-  "coast",     "US",
-  "seashore",     "UK",
-  "seaside",     "UK"
+  "beach", "US",
+  "coast", "US",
+  "seashore", "UK",
+  "seaside", "UK"
 )
 # This is okay for small, internal, static data.
 
@@ -389,7 +389,7 @@ echo:::.packageName # "echo"
 devtools::check(pkg = echo_dir)
 # We get 1 warning and 2 notes
 
-# The WARNING states that we did not include documentation entries for 
+# The WARNING states that we did not include documentation entries for
 # the three exported functions.
 
 # The first NOTE states that we did not use a standard license specification
@@ -416,7 +416,7 @@ english <- temp <- NULL
 english <- NULL
 temp <- NULL
 
-# This is similar to the base R case where instead of 
+# This is similar to the base R case where instead of
 # writing directly `df$english[dv$name == "beach"] <- "US`,
 # we would first declare `df$english <- NULL`.
 
@@ -539,14 +539,14 @@ timestamp <- function(time = Sys.time()) {
 # We can also put the format() call inside of withr::with_locale():
 timestamp <- function(time = Sys.time()) {
   withr::with_locale(
-    new = c("LC_TIME" = "C"), 
+    new = c("LC_TIME" = "C"),
     code = format(time, "%Y-%B-%d_%H-%M-%S", tz = "UTC")
   )
 }
 
 
 # It is best to keep the scope of such changes as narrow as possible.
-# The `tz` argument inside of `format.POSIXct()` is the most surgical 
+# The `tz` argument inside of `format.POSIXct()` is the most surgical
 # way to deal with the timezone.
 
 # We make the temporary locale modification with the "withr" package,

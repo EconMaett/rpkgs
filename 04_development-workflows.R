@@ -65,7 +65,7 @@ available::available(name = "doofus")
 
 # `pak::pkg_name_check()` works similarly:
 pak::pkg_name_check(name = "doofus")
-# It does not open the web pages in the browser but instead reports them 
+# It does not open the web pages in the browser but instead reports them
 # in the console output.
 
 
@@ -88,7 +88,7 @@ pak::pkg_name_check(name = "doofus")
 # and `.gitignore` file.
 
 # WARNING: Do NOT use `utils::package.skeleton()` to create a package.
-# This function creates a package that immediately throws errors with 
+# This function creates a package that immediately throws errors with
 # `R CMD build`.
 # It anticipates a different development process.
 # Use `usethis::create_package()` instead.
@@ -149,7 +149,7 @@ pak::pkg_name_check(name = "doofus")
 
 ### 4.2.4 How to launch an RStudio Project ----
 
-# Double-click on the `.Rproj` file in Windows Explorer ot launch the 
+# Double-click on the `.Rproj` file in Windows Explorer ot launch the
 # project in RStudio.
 
 # You can also open a project from within RStudio via "File" -> "Open Project

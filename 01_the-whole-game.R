@@ -137,7 +137,7 @@ unlist(strsplit(x, split = ","))
 
 strsplit(x, split = ",")[[1]]
 
-# The second solution is safer and we want to use it in a 
+# The second solution is safer and we want to use it in a
 # custom-function caled `strsplit1()`:
 strsplit1 <- function(x, split) {
   strsplit(x, split = split)[[1]]
@@ -212,7 +212,7 @@ exists("strsplit1", where = globalenv(), inherits = FALSE)
 # be replaced.
 
 # To add your own metadata, make these edits:
-# - Make yourself the author. If you don't have an ORCID, omit the 
+# - Make yourself the author. If you don't have an ORCID, omit the
 #   `comment = ...` portion.
 # - Write some descriptive text in the `Title` and `Description` fields.
 
@@ -246,7 +246,7 @@ exists("strsplit1", where = globalenv(), inherits = FALSE)
 ## 1.2 `document()` ----
 
 # We write a specially formatted comment right above `strsplit1()`, in
-# its source file, and then let a package called "roxygen2" handle the 
+# its source file, and then let a package called "roxygen2" handle the
 # createion of `man/strsplit1.Rd`.
 
 # If you use RStudio, open `R/strsplit1.R` in the source editor and put
@@ -274,7 +274,7 @@ exists("strsplit1", where = globalenv(), inherits = FALSE)
 # it is not yet present in an installed package,
 # since we have not yet installed the package "regexcite".
 
-# Only once the package has been formally bult and installed will all 
+# Only once the package has been formally bult and installed will all
 # help files exhibit proper links and a package index.
 
 
@@ -309,7 +309,7 @@ exists("strsplit1", where = globalenv(), inherits = FALSE)
 # You should now restart your R session and ensure you have
 # a clean workspace.
 
-# Then you may call `library(regexcite)` and check if you can use the 
+# Then you may call `library(regexcite)` and check if you can use the
 # function `regexcite::strsplit1("alfa,bravo,charlie,delta", split = ",")`
 # in your new instance of RStudio.
 
@@ -391,7 +391,7 @@ test_that(desc = "strsplit1() splits a string", code = {
 
 # Let us revisit `strsplit1()` to amek it more like a "stringr" function.
 str_split_one <- function(string, pattern, n = Inf) {
-  stopifnot(is.character(string), length(string) <=1)
+  stopifnot(is.character(string), length(string) <= 1)
   if (length(string) == 1) {
     stringr::str_split(string = string, pattern = pattern, n = n)
   } else {

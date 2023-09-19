@@ -108,7 +108,7 @@
 # The `.Rbuildignore` file controls which files form the source package
 # make it into the downstream forms.
 
-# Each line of `.Rbuildignore` s a Perl-compatible regular expression that is 
+# Each line of `.Rbuildignore` s a Perl-compatible regular expression that is
 # matched, without regard to case, against the path to each file in the source package.
 
 # If the regular expression matches, that file or directory is excluded.
@@ -138,7 +138,7 @@
 #   CRAN's purview:
 #   - Files relating to the RStudio IDE
 #   - Using the "pkgdown" package to generate a website.
-#   - Configuration files 
+#   - Configuration files
 
 
 ## 3.4 Binary package ----
@@ -161,7 +161,7 @@
 # If you submit your package in bundled form to CRAN, the latter will create
 # and distribute the package binaries.
 
-# CRAN packages are available in binary form. 
+# CRAN packages are available in binary form.
 # The "readxl" package for Windows in binary form would be
 # `readxl_1.3.1.zip`.
 
@@ -185,7 +185,7 @@
 
 # - If you had any objects in `data/`, they have now been converted into a more efficient form.
 
-# - The contents of `inst/` are moved to the top-level directory. For example, 
+# - The contents of `inst/` are moved to the top-level directory. For example,
 #   vignette files are now in `doc/`.
 
 # - some files and folders have been dropped, such as `README.md`, `build/`, `tests/`,
@@ -219,7 +219,7 @@
 # in use in the current session.
 
 # If you try to install an R package with compiled code on Windows, an attempt to
-# install a new version of a package that is currently in use can result in a 
+# install a new version of a package that is currently in use can result in a
 # corrupt installation, meaning the package's R code has been updated, but its
 # compiled code has not.
 
@@ -269,7 +269,7 @@ library(usethis)
 # The "usethis" package is now loaded into memory, and has been attached to the
 # **search path**.
 
-# The distinction between loading and attaching packages is not important when 
+# The distinction between loading and attaching packages is not important when
 # writing scripts, but very important when writing packages.
 
 
@@ -310,7 +310,7 @@ lapply(X = .libPaths(), FUN = list.dirs, recursive = FALSE, full.names = FALSE)
 
 
 # Packages like "renv" and its predecessor, "packrat", automate the process of
-#managing project-specific libraries.
+# managing project-specific libraries.
 
 # This is important to make data products reproducible, portable, and isolated
 # from one another.

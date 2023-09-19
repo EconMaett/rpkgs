@@ -4,7 +4,7 @@ library(tidyverse)
 
 localize_beach <- function(dat) {
   lookup_table <- read_csv(
-    file = "beach-lookup-table.csv", 
+    file = "beach-lookup-table.csv",
     col_types = cols(where = "c", english = "c")
   )
   left_join(x = dat, y = lookup_table, by = join_by(where))

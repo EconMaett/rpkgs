@@ -14,8 +14,8 @@ setwd(dir = delta_dir)
 devtools::install()
 library(delta)
 
-dat <- dat |> 
-  delta::localize_beach() |> 
+dat <- dat |>
+  delta::localize_beach() |>
   delta::celsify_temp()
 
 write_csv(dat, paste0(orig_wd, "/", delta::outfile_path(infile)))
