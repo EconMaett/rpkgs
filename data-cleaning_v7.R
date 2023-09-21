@@ -19,4 +19,6 @@ infile <- "swim.csv"
   celsify_temp())
 
 write_csv(dat, outfile_path(infile))
+
+citation("golf")
 # END
