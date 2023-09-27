@@ -56,12 +56,18 @@ Other packages referenced in the book include:
 
 Sometimes you want to depend only on the underlying packages that many [tidyverse](https://www.tidyverse.org/) packages use under the hood:
 
-- [vroom](https://vroom.r-lib.org/): The fastest delimited reader for R.
-
 - [httr2](https://httr2.r-lib.org/): Provides a pipe-able API with an explicit request object that solves many problems felt by packages that wrap APIs.
 
 - [vctrs](https://vctrs.r-lib.org/): Provides a new `vctr`class that includes features meant to help during package development.
 
 - [tidyselect](https://tidyselect.r-lib.org/): The backend to several tidyverse verbs.
+
+- [rlang](https://rlang.r-lib.org/): A collection of frameworks and APIs for programming with R. [tidyverse](https://www.tidyverse.org/) packages treat `rlang` like an extension of R's base package and always include it as a dependency.
+
+- [vroom](https://vroom.r-lib.org/): The fastest delimited reader for R. This is the package that [readr](https://readr.tidyverse.org/) depends on.
+
+- [stringi](https://stringi.gagolewski.com/): Fast and portable character string processing in R. This is the package that [stringr](https://stringr.tidyverse.org/) depends on.
+
+- [glue](https://glue.tidyverse.org/): Interpreted string literals that are small, fast, and dependency free. Packages like [dplyr](https://dplyr.tidyverse.org/) and [stringr](https://stringr.tidyverse.org/) depend on it.
 
 
